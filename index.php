@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-require 'bookish.scrapper.php';
+require 'bookish.scrappers.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,15 +16,11 @@ require 'bookish.scrapper.php';
 <?php
 
 if(isset($_GET['q'])){
-
 $query = $_GET['q'];
 $searchScrapper = new BookishScrapper();
-$images = $searchScrapper->bookishSearchScrapper($query);
-foreach ($images as $image) {
-echo "<img src=".$image->textContent.PHP_EOL." >" ;
-}
+$result = $searchScrapper->bookishSearchScrapper($query);
 
-
+echo json_encode($result);
 }
 ?> 
 
