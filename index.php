@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require 'bookish.scrapper.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,17 +18,9 @@ require 'vendor/autoload.php';
 if(isset($_GET['q'])){
 
 $query = $_GET['q'];
-$client = new \GuzzleHttp\Client();
-$response = $client->get('https://www.pdfdrive.com/search?q='.$query.'&pagecount=&pubyear=&searchin=&em=');  //$client->request('GET', 'https://www.pdfdrive.com/search?q='.$query.'&searchin=eng');
-$resString = (string) $response->getBody();
-libxml_use_internal_errors(true);
-$xmlDoc = new DOMDocument();
-$xmlDoc->loadHTML($resString);
-$xpath = new DOMXPath($xmlDoc);
-$images = $xpath->evaluate('//div[@class="file-left"]//a/img/@src');
-$extractedTitles = [];
+$searchScrapper = new BookishScrapper();
+$images = $searchScrapper->bookishSearchScrapper($query);
 foreach ($images as $image) {
-$extractedTitles[] = $image->textContent.PHP_EOL;
 echo "<img src=".$image->textContent.PHP_EOL." >" ;
 }
 
