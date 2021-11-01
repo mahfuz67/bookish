@@ -28,7 +28,7 @@ $images = $xpath->evaluate('//div[@class="file-left"]//a/img/@src');
 $extractedTitles = [];
 foreach ($images as $image) {
 $extractedTitles[] = $image->textContent.PHP_EOL;
-echo '<p>'.$title->textContent.PHP_EOL.'</p>' ;
+echo '<p>'.$image->textContent.PHP_EOL.'</p>' ;
 }
 
 
