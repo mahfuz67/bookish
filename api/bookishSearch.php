@@ -47,5 +47,5 @@ if( isset($_GET['q']) || isset($_GET['pagecount']) || isset($_GET['c']) || isset
         );
     };
 
-    json_encode($resultsData);
+   echo json_encode($resultsData);
 }
