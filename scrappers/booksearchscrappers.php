@@ -71,7 +71,8 @@ class BookObjectGetterSearch {
         if (empty($bookIfNew)) {
             return "";
         } else {
-            return "New!";
+            $bookIfNew =  $bookIfNew[0]->textContent.PHP_EOL;
+            return $bookIfNew;
         }
         
     }
