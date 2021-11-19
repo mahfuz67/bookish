@@ -9,7 +9,7 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
     if($_GET['getbookpdf'] == 'true' ){
-
+    
         $link = $_GET['bookinfolink'];
         $link = trim($link);
         $curl = curl_init($link);
@@ -26,8 +26,26 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         $bookLinkD = $bookLinkD[0]->textContent.PHP_EOL;
         $bookLinkD = trim($bookLinkD);
         $bookLinkDFull = "https://www.pdfdrive.com$bookLinkD"; 
-        $serverUrl = 'http://localhost:9515';
-        $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
+        $url = "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub"; 
+        
+        // $caps = array(
+        //         "platform" => "Windows 10",
+        //         "browserName" => "Chrome",
+        //         "version" => "96.0",
+        //         "resolution" => "1024x768",
+        //         "build" => "LambdaTest-build-1",
+        //         "name" => "Parallel test 1"
+        //   );
+ 
+        $desired_capabilities = new DesiredCapabilities();
+        $desired_capabilities->setCapability('browserName',"Chrome");
+        $desired_capabilities->setCapability('version',"96.0");
+        $desired_capabilities->setCapability('platform', "Windows 10");
+        $desired_capabilities->setCapability('name', "Parallel test 1");
+        $desired_capabilities->setCapability('build', "LambdaTest-build-1");
+        $desired_capabilities->setCapability("resolution", "1024x768");
+
+        $driver = RemoteWebDriver::create($url, $desired_capabilities);
         $driver->get($bookLinkDFull);
         $element = $driver->wait(30, 500)->until(
                 function () use ($driver) {
