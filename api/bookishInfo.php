@@ -54,6 +54,7 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
                     return $element;
                 }
             );
+            $driver->close();
         $bookLinkFull = ($element[0] == '/') ? "https://www.pdfdrive.com$element" : $element ;
         echo json_encode($bookLinkFull);
        
