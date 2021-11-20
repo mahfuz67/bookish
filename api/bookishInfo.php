@@ -26,7 +26,8 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         $bookLinkD = $bookLinkD[0]->textContent.PHP_EOL;
         $bookLinkD = trim($bookLinkD);
         $bookLinkDFull = "https://www.pdfdrive.com$bookLinkD"; 
-        $url = "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub"; 
+        //$url = "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub";
+        $url = "https://bookish.herokuapp.com/app/.chromedriver/bin/chromedriver";
         
         // $caps = array(
         //         "platform" => "Windows 10",
@@ -37,15 +38,16 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         //         "name" => "Parallel test 1"
         //   );
  
-        $desired_capabilities = new DesiredCapabilities();
-        $desired_capabilities->setCapability('browserName',"Chrome");
-        $desired_capabilities->setCapability('version',"96.0");
-        $desired_capabilities->setCapability('platform', "Windows 10");
-        $desired_capabilities->setCapability('name', "Parallel test 1");
-        $desired_capabilities->setCapability('build', "LambdaTest-build-1");
-        $desired_capabilities->setCapability("resolution", "1024x768");
+        // $desired_capabilities = new DesiredCapabilities();
+        // $desired_capabilities->setCapability('browserName',"Chrome");
+        // $desired_capabilities->setCapability('version',"96.0");
+        // $desired_capabilities->setCapability('platform', "Windows 10");
+        // $desired_capabilities->setCapability('name', "Parallel test 1");
+        // $desired_capabilities->setCapability('build', "LambdaTest-build-1");
+        // $desired_capabilities->setCapability("resolution", "1024x768");
 
-        $driver = RemoteWebDriver::create($url, $desired_capabilities);
+        // $driver = RemoteWebDriver::create($url, DesiredCapabilities());
+        $driver = RemoteWebDriver::create($url, DesiredCapabilities::chrome());
         $driver->get($bookLinkDFull);
         $element = $driver->wait(30, 500)->until(
                 function () use ($driver) {
