@@ -27,7 +27,7 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         $bookLinkD = trim($bookLinkD);
         $bookLinkDFull = "https://www.pdfdrive.com$bookLinkD"; 
         //$url = "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub";
-        $url = getenv('CHROMEDRIVER_PATH');
+        $url = getenv('GOOGLE_CHROME_BIN');
         
         // $caps = array(
         //         "platform" => "Windows 10",
