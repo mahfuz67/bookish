@@ -45,7 +45,7 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         $desired_capabilities->setCapability('build', "LambdaTest-build-1");
         $desired_capabilities->setCapability("resolution", "1024x768");
 
-        $driver = RemoteWebDriver::create($url, DesiredCapabilities());
+        $driver = RemoteWebDriver::create($url, $desired_capabilities);
         $driver->get($bookLinkDFull);
         $element = $driver->wait(30, 500)->until(
                 function () use ($driver) {
