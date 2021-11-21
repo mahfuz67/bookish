@@ -107,7 +107,7 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
       
         $result = array(
             "bookAuthorMain" => $bookObectGetterInfo->getBookAuthor($xpath),
-            "suggestedBooks" => $resultsData,
+            "suggestedBooks" => json_encode($resultsData),
         ); 
         echo json_encode($result);
     }
