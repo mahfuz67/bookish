@@ -101,7 +101,7 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
                 "size"=> $bookObectGetterInfo->getBookSIzeSuggested($bookIds[$i], $xpath),
                 "ifNew"=>$bookObectGetterInfo->checkIfNewSuggested($bookIds[$i], $xpath),
                 "downloads"=>$bookObectGetterInfo->getBookNumberOfDownloadsSuggested($bookIds[$i], $xpath),
-                "bookLink"=>$bookObectGetterInfo->getBookInfoLinkSuggested($bookIds[$i], $xpath),
+                "linkToInfo"=>$bookObectGetterInfo->getBookInfoLinkSuggested($bookIds[$i], $xpath),
             );
         };
       
