@@ -26,24 +26,25 @@ if (isset($_GET['bookinfolink']) && isset($_GET['getbookpdf'])){
         $bookLinkD = $bookLinkD[0]->textContent.PHP_EOL;
         $bookLinkD = trim($bookLinkD);
         $bookLinkDFull = "https://www.pdfdrive.com$bookLinkD"; 
-        $url = "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub";
+        $url ="https://mahfuzbello_qcArE7:EpehZFTHpwknnWqDgKCX@hub-cloud.browserstack.com/wd/hub";
+        // "https://mahfuzbello6:KaB0AE4epLw27JwlKHv3Wdh7bnRIVfcl4BZlOXAlrhlZgB8yDn@hub.lambdatest.com/wd/hub";
 
         // $caps = array(
-        //         "platform" => "Windows 10",
-        //         "browserName" => "Chrome",
-        //         "version" => "96.0",
+        //         "os_version" => "10",
+        //         "browser" => "chrome",
+        //         "version" => "97.0 beta",
         //         "resolution" => "1024x768",
-        //         "build" => "LambdaTest-build-1",
+        //         "build" => "browserstack-build-1",
         //         "name" => "Parallel test 1"
         //   );
  
         $desired_capabilities = new DesiredCapabilities();
-        $desired_capabilities->setCapability('browserName',"Chrome");
-        $desired_capabilities->setCapability('version',"96.0");
-        $desired_capabilities->setCapability('platform', "Windows 10");
+        $desired_capabilities->setCapability('browser',"chrome");
+        $desired_capabilities->setCapability('browser_version',"97.0 beta");
+        $desired_capabilities->setCapability('os_version', "10");
         $desired_capabilities->setCapability('name', "Parallel test 1");
-        $desired_capabilities->setCapability('build', "LambdaTest-build-1");
-        $desired_capabilities->setCapability("resolution", "1024x768");
+        $desired_capabilities->setCapability('build', "browserstack-build-1");
+        $desired_capabilities->setCapability("os", "Windows");
 
         $driver = RemoteWebDriver::create($url, $desired_capabilities);
         $driver->get($bookLinkDFull);
